@@ -1,0 +1,93 @@
+/**
+ * @author			Filipe Araujo
+ * 
+ * @version			1.1
+ * @since			1.0
+ * 
+ * @lastChanges		
+ */
+
+#wgt-bn-bar {
+	bottom : 0;
+	color : #666;	
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	height : 30px;
+	margin : 0 2%;
+	position : fixed;
+	width : 96%;
+	z-index : 10000;
+}
+	#bn-bar-bg {
+		height : 40px;
+		position : relative;
+		background : #e6e6e6;
+		background: -webkit-gradient(linear, left top, left bottom, from(white), to(#d9d9d9), color-stop(0.1, #e6e6e6), color-stop(0.2, #d9d9d9)) ;
+		border : 1px solid #aaa;
+		z-index : 10000;
+	}
+		#bn-bar-bg.bar-shadow {
+			-moz-box-shadow: 0 0 5px #ccc;
+			-webkit-box-shadow: 0 0 5px #ccc;
+		}
+		#bn-bar-bg.bar-rounded {
+			-moz-border-radius : 5px;
+			-webkit-border-radius : 5px;
+		}
+		
+	/**
+	* @section				Modules
+	*/
+	#bn-bar-modules {
+		height : 30px;
+		position : relative;
+		margin : 0 1px;
+		top : -41px;
+		width : auto;
+		z-index : 10001;
+	}
+		#bn-bar-modules .mod {
+			float : left;
+			height : 31px;
+			top : -1px;
+			position : relative;
+		}
+		#bn-bar-modules .mod.active {
+			background : #ccc;
+		}
+			#bn-bar-modules .mod.active .panel {
+				display : block;
+			}		
+			#bn-bar-modules .link {
+				border-right : 1px solid #aaa;
+				float : left;
+				padding : 3px;
+				position : relative;
+			}
+				#bn-bar-modules .mod a {
+					border : 1px solid transparent;
+					display : block;
+					height : 23px;
+					line-height : 23px;
+					padding : 0 8px;
+				}
+					#bn-bar-modules .mod a:hover{
+						background : #eee;
+						border : 1px solid #ccc;
+						-moz-border-radius : 2px;
+						-webkit-border-radius : 2px;
+					}
+
+			#bn-bar-modules .mod .panel {
+				background : #ccc;
+				border : 1px solid #aaa;
+				border-bottom : 0;
+				bottom : 31px;
+				display : none;
+				left : -1px;
+				padding : 2px;
+				position : absolute;
+				width : 250px;
+				-moz-border-radius : 2px 2px 0 0;
+				-webkit-border-radius : 2px 2px 0 0;
+			}
