@@ -7,22 +7,7 @@
  * @lastChanges		
  */
 
-/**
-* @section				Asthetics
-*/
-#wgt-bn-bar.bn-bar-shadow #bn-bar-bg {
-	-moz-box-shadow: 0 0 5px #ccc;
-	-webkit-box-shadow: 0 0 5px #ccc;
-}
-#wgt-bn-bar.bn-bar-rounded #bn-bar-bg {
-	-moz-border-radius : 5px;
-	-webkit-border-radius : 5px;
-}
-
-/**
-* @element				BN Bar Widget
-*/
-#wgt-bn-bar {
+#cn_bar {
 	bottom : 0;
 	color : #666;	
 	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
@@ -30,143 +15,147 @@
 	height : 30px;
 	margin : 0 2%;
 	position : fixed;
-	width : 96%;
+	width : 94%;
 	z-index : 10000;
 }
-	#bn-bar-bg {
+	#cnb_bg {	
 		height : 40px;
 		position : relative;
 		background : #e6e6e6;
 		background: -webkit-gradient(linear, left top, left bottom, from(white), to(#d9d9d9), color-stop(0.1, #e6e6e6), color-stop(0.2, #d9d9d9)) ;
 		border : 1px solid #aaa;
-		z-index : 10001;
+		z-index : 10000;
+		-moz-border-radius : 5px;
+		-webkit-border-radius : 5px;
+		-moz-box-shadow: 0 0 5px #ccc;
+		-webkit-box-shadow: 0 0 5px #ccc;
 	}
 		
 	/**
-	* @element				BN Bar Modules
+	* @section				Modules
 	*/
-	#bn-bar-modules {
+	#cnb_modules {
 		height : 30px;
+		padding : 0 200px;
 		position : relative;
-		padding : 0 70px 0 1px;
 		top : -41px;
 		width : auto;
-		z-index : 10002;
+		z-index : 10001;
 	}
-		#bn-bar-modules .mod {
-			float : left;
-			height : 31px;
-			top : -1px;
-			position : relative;
+		#cnb_modules>ul {
+			list-style : none;
+			height : 30px;
+			margin : 0;
+			padding : 0;
 		}
-		#bn-bar-modules .active {
-			background : #ccc;
-		}
-			#bn-bar-modules .mod.active .panel {
+			#cnb_modules>ul .mod,
+			#cnb_modules>ul .pub {
+				float : left;
+				height : 30px;
+			}
+			#cnb_modules .mod>a,
+			#cnb_modules .pub>a {
 				display : block;
+				height : 30px;
+				line-height : 27px;
+				padding : 0 8px;
 			}
-			#bn-bar-modules .link {
-				border-right : 1px solid #bbb;
-				float : left;
-				padding : 3px;
-				position : relative;
-			}
-			#bn-bar-modules .active .link {
-				border-right : 1px solid #aaa;
-			}
-				#bn-bar-modules .link>a {
-					border : 1px solid transparent;
-					display : block;
-					height : 23px;
-					line-height : 23px;
-					padding : 0 8px;
-				}
-					#bn-bar-modules .link>a:hover{
-						background : #eee;
-						border : 1px solid #ccc;
-						-moz-border-radius : 2px;
-						-webkit-border-radius : 2px;
-					}
-
-			#bn-bar-modules .mod .panel {
-				background : #ccc;
-				border : 1px solid #aaa;
-				border-bottom : 0;
-				bottom : 31px;
-				display : none;
-				left : -1px;
-				padding : 2px;
-				position : absolute;
-				width : 250px;
-				z-index : 10003;
-				-moz-border-radius : 2px 2px 0 0;
-				-webkit-border-radius : 2px 2px 0 0;
-			}
-
-/**
-* @element				BN Bar Specific Modules
-*                       Debug Mod
-*/
-#bn-bar-modules #mod-debug {
-	position : absolute;
-	right : 0;
-}
-	#bn-bar-modules #mod-debug .link {
+	/**
+	* @section						Modules
+	* @module						User
+	*/	
+	#cnb_user {
+		left : 0;
+		position : absolute;
+		top : 0;
+		width : 200px;
+	}
+		
+	/**
+	* @section						Modules
+	* @module						Share
+	*/	
+	#cnb_share {
 		border-left : 1px solid #aaa;
-		border-right : 1px solid #aaa;
-	}
-	#bn-bar-modules #mod-debug .panel {
-		left : auto;
 		right : 0;
-		width : 1100px;
-		z-index : 10004;
+		position : absolute;
+		top : 0;
+		width : 200px;
 	}
-		#mod-debug-panel-content {
-			border : 1px solid #aaa;
-			background : #ddd;
-			height : 200px;
-			padding : 5px;
-		}
-		#mod-debug-panel-nav {
-			height : 16px;
+	
+	/**
+	* @section						Modules
+	* @module						Pub
+	*/	
+	#cnb_pubs {
+	}
+		ul#cnb_pubs .pub {
+			border-left : 1px solid #aaa;
+			float : right;
 			position : relative;
-			top : 1px;
 		}
-			#mod-debug-panel-nav li {
-				float : left;
-				line-height : 15px;
+		ul#cnb_pubs .active {
+			border-left : 2px solid #999;
+			border-right : 2px solid #999;
+			height : 31px;
+			position : relative;
+			top : -2px;
+			z-index : 10002;
+			-moz-box-shadow: 0 1px 5px #ccc;
+			-webkit-box-shadow: 0 1px 5px #ccc;	
+		}
+		ul#cnb_pubs .pub + .active {
+			border-right : 1px solid #999;
+		}
+			#cnb_pubs .pub>a {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				width : 113px;
 			}
-			#mod-debug-panel-nav li.active {
-					background : #ddd;
-					border : 1px solid #999;
-					border-bottom : 0;
+			#cnb_pubs .active>a {
+				background : #f7f7f7;
+				color : #666;
+				line-height : 31px;
+				position : relative;
+				width : 110px;
+				z-index : 10003;
+			}
+			#cnb_pubs .pub .panel {
+				background : -webkit-gradient( linear, left bottom, left top, color-stop(0.68, #f7f7f7), color-stop(0.90, #fff));
+				background : -moz-linear-gradient( center bottom, #f7f7f7 68%, #fff 90% );
+				border : 2px solid #999;
+				border-bottom : 1px solid #999;
+				bottom  : 30px;
+				display : none;
+				height : 200px;
+				min-width : 300px;
+				right : -2px;
+				position : absolute;
+				z-index : 10000;
+				-moz-border-radius : 5px 5px 0 0;
+				-webkit-border-radius : 5px 5px 0 0;
+				-moz-box-shadow: 0 0 5px #ccc;
+				-webkit-box-shadow: 0 0 5px #ccc;	
+			}
+				#cnb_pubs .panel h1 {
+					color : #666;
+					font-size : 11px;
+					padding-left : 8px;
+					margin : 10px 0;
 				}
-				#mod-debug-panel-nav li a {
-					display : inline;
-					padding : 0 10px;
+				#cnb_pubs .panel .pub_info {
+					border-top : 1px solid #ccc;
+					border-bottom : 1px solid #ccc;
+					height : 110px;
+					padding : 5px 1px 5px 5px;
 				}
-				#mod-debug-panel-nav li a:hover {
-					text-transform : underline;
-				}
-
-/**
-* @element				BN Bar Specific Modules
-*                       Debug Mod
-*                       XML Debug
-*/
-#mod-debug-panel-xml {
-	height : 200px;
-	overflow : auto;
-}
-	#mod-debug-panel-xml ul {
-		padding-left : 8px;
-	}
-	#mod-debug-panel-xml>ul {
-		padding-left : 0;
-	}
-		#mod-debug-panel-xml li.collapse>ul {
-			display : none;
-		}
-		#mod-debug-panel-xml li.expand>ul {
-			display : block;
-		}
+					#cnb_pubs .pub_info div {
+						height : 110px;
+						overflow : auto;
+						width : 100%;
+					}
+						#cnb_pubs .pub_info p {
+							font-size : 10px;
+							margin : 5px;
+						}

@@ -7,99 +7,171 @@
 		<link type="text/css" href="css/reset.css" rel="stylesheet"/>
 		<link type="text/css" href="css/style.css" rel="stylesheet"/>
 		<link type="text/css" href="css/debug.css" rel="stylesheet"/>
-		<script src="js/jquery-1.4.2.min.js"></script>
-		<script src="js/bn.iris.js"></script>
-		<script src="js/bn.debug.js"></script>
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>		
+		<!--<script type="text/javascript" src="js/cnp.js"></script>-->
+		<script type="text/javascript" src="js/cn.bar.js"></script>
 	</head>
 	<body>
 		<div class="debug">
 			<h1>Project Iris</h1>
+			<h2>:: Definitions</h2>
+			<ul id="definitions">
+				<li>
+					<span>modules</span>
+					<p>Any item that can be docked into the bar.  Modules open panels</p>
+				</li>
+				<li class="sub">
+					<span>User module</span>
+					<p>Left module - static width container housing user functionality : login, register etc...</p>
+				</li>
+				<li class="sub">
+					<span>Sharing module</span>
+					<p>Right module - static width container that houses communication functionality : rss, email , print</p>
+				</li>
+				<li class="sub">
+					<span>Publication module</span>
+					<p>Center module - collection area which publications are stored to be shared</p>
+				</li>
+				<li>
+					<span>Pubs</span>
+					<p>Short for publications - articles that are stored in the publication module</p>
+				</li>
+				<li>
+					<span>panels</span>
+					<p>window that open in reaction to a module interaction</p>
+				</li>
+				<li>
+					<span>Timeline ?</span>
+					<p>Shareable user history</p>
+				</li>
+			</ul>
+			<h2>:: Actions</h2>
+			<div class="links">
+				<div>
+					Pubs:
+					<a href="#" onclick="CN.iris.pub.add( {content : 'this is the content', title : 'title of module', type : 'article', url : 'http://www.google.com' });">New Module</a>
+					<a href="#" onclick="CN.iris.pub.add( {content : 'this is the content', title : 'title of  ', type : 'article', url : 'http://www.google.com' });">New Mod Short Name</a>
+					<a href="#" onclick="CN.iris.pub.add( {content : 'this is the content', title : 'title of module with long name', type : 'article', url : 'http://www.google.com' });">New Mod Long Name </a>
+					<a href="#" onclick="CN.iris.db.remove('pubs');">Drop Pubs</a>
+				</div>
+				<div>
+					Timelne:
+					<a href="#" onclick="CN.iris.timeline.add( {article : 1, title : 'Have You Ever Gotten Fashion Inspiration From Your Dreams?', site : 'glamour', url : 'http://www.glamour.com/fashion/blogs/slaves-to-fashion/2010/04/have-you-ever-gotten-fashion-i.html' });">Have You Ever Gotten Fashion Inspiration From Your Dreams?</a>
+					<a href="#" onclick="CN.iris.timeline.add( {article : 2, title : 'Suspenders: Not Just for Bankers Anymore', site : 'gq', url : 'http://www.gq.com/style/wear-it-now/201005/best-spring-suspenders-gq-endorses-essentials#slide=1' });">Suspenders: Not Just for Bankers Anymore</a>
+					<a href="#" onclick="CN.iris.timeline.add( {article : 3, title : 'How to Get Jeff Daniels Out of Bed', site : 'gq', url : 'http://www.gq.com/blogs/the-q/2010/04/how-to-get-jeff-daniels-out-of-bed.html' });">How to Get Jeff Daniels Out of Bed'</a>
+					<a href="#" onclick="CN.iris.db.remove('timeline');">Drop Timeline</a>
+				</div>
+			</div>			
+			<h2>:: Data Sample</h2>
+			<div class="datasample">
+				<table>
+					<thead>
+						<tr>
+							<th>user-id</th>
+							<th>user-email</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>1</td>
+						<td>filipe.alves.araujo@gmail.com</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>test@test.com</td>
+					</tr>
+				</table>
+				
+				<table>
+					<thead>
+						<tr>
+							<th>article-id</th>
+							<th>article-title</th>
+							<th>article-url</th>
+							<th>site</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>1</td>
+						<td>Have You Ever Gotten Fashion Inspiration From Your Dreams?</td>
+						<td>http://www.glamour.com/fashion/blogs/slaves-to-fashion/2010/04/have-you-ever-gotten-fashion-i.html</td>
+						<td>glamour</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Suspenders: Not Just for Bankers Anymore</td>
+						<td>http://www.gq.com/style/wear-it-now/201005/best-spring-suspenders-gq-endorses-essentials#slide=1</td>
+						<td>gq</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>How to Get Jeff Daniels Out of Bed</td>
+						<td>http://www.gq.com/blogs/the-q/2010/04/how-to-get-jeff-daniels-out-of-bed.html</td>
+						<td>gq</td>
+					</tr>
+				</table>
+				
+				<table>
+					<thead>
+						<tr>
+							<th>user-id</th>
+							<th>article-id</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>1</td>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>2</td>
+					</tr>
+				</table>
+				
+			</div>
 		</div>
 		
+		
+			
 		<!-- CNBAR-->
-		<div id="wgt-bn-bar" class="bn-bar-shadow bn-bar-rounded">
-			<div id="bn-bar-bg"></div>
-
-			<div id="bn-bar-modules">
-				<ul class="mod">
-					<li class="link">
+		<div id="cn_bar">
+			<div id="cnb_bg"></div>
+			
+			<div id="cnb_modules">
+				<ul id="cnb_user">
+					<li class="mod">
 						<a href="#">User Module</a>
 					</li>
-					<li class="panel">
-						<a href="#">Link</a>
-						<a href="#">Link 2</a>
-						<a href="#">Link 123</a>
-						<a href="#">Link 1234</a>
-					</li>
-				</ul>
-				<ul class="mod">
-					<li class="link">
+					<li class="mod">
 						<a href="#">User Module</a>
 					</li>
-					<li class="panel">
-						<a href="#">Link</a>
-						<a href="#">Link 2</a>
-						<a href="#">Link 123</a>
-						<a href="#">Link 1234</a>
-					</li>
 				</ul>
-				<ul class="mod">
-					<li class="link">
-						<a href="#">User Module</a>
-					</li>
-					<li class="panel">
-						<a href="#">Link</a>
-						<a href="#">Link 2</a>
-						<a href="#">Link 123</a>
-						<a href="#">Link 1234</a>
-					</li>
-				</ul>
-				<ul class="mod">
-					<li class="link">
-						<a href="#">User Module</a>
-					</li>
-					<li class="panel">
-						<a href="#">Link</a>
-						<a href="#">Link 2</a>
-						<a href="#">Link 123</a>
-						<a href="#">Link 1234</a>
-					</li>
-				</ul>
-				<ul class="mod">
-					<li class="link">
-						<a href="#">User Module</a>
-					</li>
-					<li class="panel">
-						<a href="#">Link</a>
-						<a href="#">Link 2</a>
-						<a href="#">Link 123</a>
-						<a href="#">Link 1234</a>
-					</li>
-				</ul>
-
-				<ul id="mod-debug" class="mod active">
-					<li class="link">
-						<a href="#">DEBUG</a>
-					</li>
-					<li class="panel">
-						<ul id="mod-debug-panel-nav">
-							<li>
-								<a href="#">Torque</a>
-							</li>
-							<li>
-								<a href="#">XML</a>
-							</li>
-							<li class="active">
-								<a href="#">CSS</a>
-							</li>
-						</ul>
-						<div id="mod-debug-panel-content">
-							<div id="mod-debug-panel-xml">
+				<ul id="cnb_pubs">
+					<li class="pub active">
+						<a href="#">Center Module</a>
+						<div class="panel" style="display:block;">
+							<h1>Center Module</h1>
+							<div class='pub_info'>
+								<div>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+								</div>
 							</div>
 						</div>
 					</li>
 				</ul>
-
+				<ul id="cnb_share">
+					<li class="mod">
+						<a href="#">Share Module</a>
+					</li>
+				</ul>
 			</div>
 		</div>
 		<!-- /CNBAR-->
